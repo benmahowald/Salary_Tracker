@@ -33,6 +33,7 @@ var addEmployee = function () {
   } else {
     resetBorders();
     employeeList.push(newEmployee);
+    alphabetize();
     displayEmployees();
     salaryTotals();
     clearFields();
@@ -43,7 +44,7 @@ var addEmployee = function () {
 var displayEmployees = function () {
   document.getElementById('userAddedEmployee').innerHTML = '';
   for (var i = 0; i < employeeList.length; i++) {
-    var employeeInfo = '<h3>' + employeeList[i].first + ' ' + employeeList[i].last +
+    var employeeInfo = '<h3>' + employeeList[i].last + ', ' + employeeList[i].first +
     '</h3><p>Title: ' + employeeList[i].title + '<br> ID #: ' +
     employeeList[i].id + '<br>Salary: ' + employeeList[i].salary.toLocaleString
     ('USD', { style: 'currency', currency: 'USD' }) + '</p>';
@@ -82,3 +83,21 @@ var salaryTotals = function () {
     document.getElementById('salaryTotal').innerHTML = monthlySalary;
   }
 };//end salaryTotal
+
+var alphabetize = function () {
+  employeeList.sort(function (a, b) {
+    var nameA = a.last.toUpperCase(); // ignore upper and lowercase
+    var nameB = b.last.toUpperCase(); // ignore upper and lowercase
+    if (nameA < nameB) {
+      return -1;
+    }
+
+    if (nameA > nameB) {
+      return 1;
+    }
+
+    // names must be equal
+
+    return 0;
+  });
+};

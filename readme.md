@@ -16,7 +16,7 @@ A 'Submit' button should clear out the inputs and your logic should store that i
 
 Finally, your logic should calculate all of the employee salaries and report back the Monthly cost of salaries.
 
-
-
+Extra Functionality To Consider
+------------------------------------------
 List employees alphabetically.
 Highlight uncompleted fields with red. [x]
