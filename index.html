@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="style.css"></link>
+    <script type="text/javascript" src="script.js"></script>
+    <title>Yearly Salary Calculator</title>
+  </head>
+  <body>
+    <h1>Salary Tracker</h1>
+    <h2>Submit the form below to add an employee and balance the budget.</h2>
+    <p>*Please complete all fields.</p>
+    <form>
+
+      <label for="firstName">First Name</label><br>
+      <input id="firstName" class="info" type="text" value=""><br>
+
+      <label for="lastName">Last Name</label><br>
+      <input id="lastName" class="info" type="text" value=""><br>
+
+      <label for="idNum">ID Number</label><br>
+      <input id="idNum" class="info" type="text" value=""><br>
+
+      <label for="title">Title</label><br>
+      <input id="title" class="info" type="text" value=""><br>
+
+      <label for="salary">Salary</label><br>
+      <input id="salary" class="info" type="text" value=""><br>
+
+      <button class='submit' type="button" onclick='addEmployee()'>Submit</button>
+    </form>
+    <article id="userAddedEmployee">
+      <p>Added employees will be displayed here.
+    </article>
+    <p>Monthly pay roll: <span id="salaryTotal">$0</span></p>
+  </body>
+</html>
