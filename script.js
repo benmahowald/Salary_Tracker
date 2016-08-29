@@ -2,6 +2,7 @@
 
 var employeeList = [];
 var totalAnnualSalary = 0;
+var verbose = (false);
 
 var addEmployee = function () {
   // console.log('in addEmployee');
@@ -11,10 +12,10 @@ var addEmployee = function () {
     last: document.getElementById('lastName').value,
     id: document.getElementById('idNum').value,
     title: document.getElementById('title').value,
-    salary: parseInt(document.getElementById('salary').value),
+    salary: Number(document.getElementById('salary').value),
   };//end newEmployee
 
-  console.log(newEmployee);
+  if (verbose) console.log(newEmployee);
 
   //check to see that all the form fields were filled out
   if (newEmployee.first == '' || newEmployee.last == '' || newEmployee.id == ''
@@ -33,7 +34,7 @@ var addEmployee = function () {
     resetBorders();
     employeeList.push(newEmployee);
     displayEmployees();
-    salaryTotal();
+    salaryTotals();
     clearFields();
   };//end else
 
@@ -44,7 +45,8 @@ var displayEmployees = function () {
   for (var i = 0; i < employeeList.length; i++) {
     var employeeInfo = '<h3>' + employeeList[i].first + ' ' + employeeList[i].last +
     '</h3><p>Title: ' + employeeList[i].title + '<br> ID #: ' +
-    employeeList[i].id + '<br>Salary: ' + employeeList[i].salary + '</p>';
+    employeeList[i].id + '<br>Salary: ' + employeeList[i].salary.toLocaleString
+    ('USD', { style: 'currency', currency: 'USD' }) + '</p>';
     document.getElementById('userAddedEmployee').innerHTML += employeeInfo;
     console.log(employeeList[i].salary);
   }//end for
@@ -67,26 +69,16 @@ var resetBorders = function () {
 
 };//end resetBorders
 
-var salaryTotal = function () {
+var salaryTotals = function () {
   // console.log('in salaryTotal');
-  console.log(employeeList);
+  // console.log(employeeList);
   totalAnnualSalary = 0;
   for (var i = 0; i < employeeList.length; i++) {
-    console.log(employeeList[i].salary);
+    // console.log(employeeList[i].salary);
     totalAnnualSalary += employeeList[i].salary;
-    document.getElementById('salaryTotal').innerHTML = totalAnnualSalary;
+    var monthlySalary = totalAnnualSalary / 12;
+    monthlySalary = Number(monthlySalary).toLocaleString
+    ('USD', { style: 'currency', currency: 'USD' });
+    document.getElementById('salaryTotal').innerHTML = monthlySalary;
   }
 };//end salaryTotal
-
-// var displaySalaryTotal = function () {
-//   document.getElementById('salaryTotal').innerHTML += '';
-//   for (var i = 0; i < employeeList.length; i++) {
-//     var payRoll = 'Monthly pay roll:' + salaryTotal;
-//
-//   }
-// };
-
-;
-;
-;
-;
