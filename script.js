@@ -2,10 +2,10 @@
 
 var employeeList = [];
 var totalAnnualSalary = 0;
-var verbose = (false);
+var verbose = false;
 
 var addEmployee = function () {
-  // console.log('in addEmployee');
+  if (verbose) console.log('in addEmployee');
 
   var newEmployee = {
     first: document.getElementById('firstName').value,
@@ -48,7 +48,7 @@ var displayEmployees = function () {
     employeeList[i].id + '<br>Salary: ' + employeeList[i].salary.toLocaleString
     ('USD', { style: 'currency', currency: 'USD' }) + '</p>';
     document.getElementById('userAddedEmployee').innerHTML += employeeInfo;
-    console.log(employeeList[i].salary);
+    if (verbose) console.log(employeeList[i].salary);
   }//end for
 
 };//end displayEmployees
